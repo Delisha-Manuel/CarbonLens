@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%; margin: 0; padding: 0; width: 100%;">
+    <head style="background-color: #edffe8; margin: 0; padding: 0; height: 100%; width: 100%;">
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="color-scheme" content="light dark" />
+        <title>CarbonLens</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2.0.6/css/pico.min.css" />
+        <style>
+            html, body {
+                height: 100%;
+                margin: 0;
+                padding: 0;
+                background-color: #edffe8;
+            }
+        </style>
+    </head>
+
+    <body style="background-size: cover; background-color: #edffe8; margin: 0; padding: 0; height: 100%; width: 100%;">
+        <header class="container" style="text-align: center; margin-bottom: 0;">
+            <hgroup>
+                <h1 style="color: #326e00; font-size: 36px;">CarbonLens: Know, Reduce, Repeat</h1>
+                <p style="color: #00a505; font-size: 24px; max-width: 100%; text-align: center">
+                    <b>Find out your carbon footprint, and take steps to reduce it!</b>
+                </p>
+                <br /><br />   
+
+                <b><p style="text-align: center; color: #422006; max-width: 800px; margin: 0 auto">
+                The current global average carbon footprint is approximately 4.7 metric tons (tCO2) per person annually, and in high-consumption regions 
+                like the United States, the average footprint is significantly higher, at approximately 14.2 to 16 metric tons per person! To meet global 
+                temperature goals, experts say that the average global footprint needs to drop below 2 to 2.5 tons per year!
+                <br /><br />   
+                            
+                With CarbonLens, you can help reach this goal. Simply input your stats below, and the random forest regressor will estimate your carbon footprint, 
+                and the LLM will suggest steps to help you reduce it.
+                </b>
+                </p>
+            </hgroup>
+        </header>
+
+        <main class="container" style="min-height: 100%; background-color: #edffe8; box-sizing: border-box;">
+            <form id="carbonForm" style="margin-top:2rem;">
+
+            <fieldset style="border:none; margin-bottom:2.5rem;">
+                <legend style="font-size:1.3rem; font-weight:700; color:#326e00; text-align:center; margin-bottom:1.2rem;">
+                🌿 Lifestyle & Daily Habits
+                </legend>
+
+                <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1.5rem;">
+
+                <div>
+                    <label><strong>Diet</strong></label>
+                    <select id="diet" required>
+                    <option>Omnivore</option>
+                    <option>Vegetarian</option>
+                    <option>Pescatarian</option>
+                    <option>Vegan</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label><strong>Showering Frequency</strong></label>
+                    <select id="shower" required>
+                    <option>Daily</option>
+                    <option>Twice a day</option>
+                    <option>More frequently</option>
+                    <option>Less frequently</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label><strong>Heating Energy Source</strong></label>
+                    <select id="heating" required>
+                    <option>Electric</option>
+                    <option>Natural Gas</option>
+                    <option>Wood</option>
+                    <option>Coal</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label><strong>Transportation Preference</strong></label>
+                    <select id="transport" required>
+                    <option>Public Transport</option>
+                    <option>Private Vehicle</option>
+                    <option>Walk / Bicycle</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label><strong>Vehicle Fuel Type</strong></label>
+                    <select id="vehicle" required>
+                    <option>Gas</option>
+                    <option>Diesel</option>
+                    <option>Electric</option>
+                    <option>Hybrid</option>
+                    <option>Unknown</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label><strong>Vehicle Distance (km / month)</strong></label>
+                    <input type="number" id="distance" min="0" required>
+                </div>
+
+                <div>
+                    <label><strong>Flights Taken Last Month</strong></label>
+                    <input type="number" id="air" min="0" required>
+                </div>
+
+                <div>
+                    <label><strong>Monthly Grocery Bill ($)</strong></label>
+                    <input type="number" id="grocery" min="0" required>
+                </div>
+
+                <div>
+                    <label><strong>Waste Bags per Week</strong></label>
+                    <input type="number" id="waste_count" min="0" required>
+                </div>
+
+                <div>
+                    <label><strong>New Clothes per Month</strong></label>
+                    <input type="number" id="clothes" min="0" required>
+                </div>
+
+                <div>
+                    <label><strong>Internet Hours per Day</strong></label>
+                    <input type="number" id="internet" step="0.1" min="0" required>
+                </div>
+
+                <div>
+                    <label><strong>TV / PC Hours per Day</strong></label>
+                    <input type="number" id="tv_pc" step="0.1" min="0" required>
+                </div>
+
+                <div>
+                    <label><strong>Social Activity Frequency</strong></label>
+                    <select id="social" required>
+                        <option>Never</option>
+                        <option>Rarely</option>
+                        <option>Sometimes</option>
+                        <option>Often</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label><strong>Waste Bag Size</strong></label>
+                    <select id="waste_size" required>
+                        <option>Small</option>
+                        <option>Medium</option>
+                        <option>Large</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label><strong>Energy Efficienct Purchases</strong></label>
+                    <select id="energy" required>
+                        <option>Yes</option>
+                        <option>No</option>
+                        <option>Sometimes</option>
+                    </select>
+                </div>
+            </fieldset>
+
+            <fieldset style="border:none; margin-bottom:2.5rem;">
+                <legend style="font-size:1.3rem; font-weight:700; color:#326e00; text-align:center; margin-bottom:1rem;">
+                ♻️ Recycling Habits ♻️
+                </legend>
+
+                <div style="max-width:400px; margin:0 auto;">
+                <label><input type="checkbox" name="recycling" value="Paper"> Paper</label>
+                <label><input type="checkbox" name="recycling" value="Plastic"> Plastic</label>
+                <label><input type="checkbox" name="recycling" value="Glass"> Glass</label>
+                <label><input type="checkbox" name="recycling" value="Metal"> Metal</label>
+                </div>
+            </fieldset>
+
+            <fieldset style="border:none; margin-bottom:2.5rem;">
+                <legend style="font-size:1.3rem; font-weight:700; color:#326e00; text-align:center; margin-bottom:1rem;">
+                🍳 Cooking Methods 🍳
+                </legend>
+
+                <div style="max-width:400px; margin:0 auto;">
+                <label><input type="checkbox" name="cooking" value="Stove"> Stove</label>
+                <label><input type="checkbox" name="cooking" value="Oven"> Oven</label>
+                <label><input type="checkbox" name="cooking" value="Microwave"> Microwave</label>
+                <label><input type="checkbox" name="cooking" value="Grill"> Grill</label>
+                <label><input type="checkbox" name="cooking" value="Airfryer"> Air Fryer</label>
+                </div>
+            </fieldset>
+
+            <div style="display:flex; justify-content:center; margin-top:2rem;">
+                <button type="submit" style="font-size:1.1rem; font-weight: bold;">
+                🌍 Calculate My Carbon Footprint 🌍
+                </button>
+            </div>
+
+            </form>
+        </main>
+        <script src="static/script.js"></script>
+    </body>
+</html>
